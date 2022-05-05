@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  def posts; 
-     render 'posts'
+  def posts
+    render 'posts'
   end
 
   def post; end
