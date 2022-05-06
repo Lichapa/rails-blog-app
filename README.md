@@ -11,6 +11,11 @@ This project is for developing a blog using rails
 
 # Setup Instructions
 
+## prerequisite
+Have the following installed:
+- Git
+- Ruby
+- Ruby on rails
 ## Clone and review it
 
 Run the following commands to clone and run it.
