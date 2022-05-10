@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  def index; end
+  def index
+    @users = User.all
+  end
 
-  def user; end
+  def user
+    @user = current_user
+    @posts = @user.recent_posts
+  end
 end
