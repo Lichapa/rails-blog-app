@@ -1,1 +1,12 @@
-<h1>Displays a list of users</h1>
+<div class="users-home">
+<% @users.each do |user| %>
+  <div class="flex inline">
+    <img src="<%= user.photo %>" alt="User image" class="details-box" />
+      <div class="details-box width-75">
+        <h1> Name: <%= user.name %></h1> 
+        <p class="right">Number of Posts: <%= user.posts_counter || 0 %></p>
+      </div>
+  </div>
+<% end %>
+</div>
+

@@ -1,1 +1,25 @@
-<h1>Display a user</h1>
+<div class="user">
+  <div class="flex inline">
+    <img src="<%= @user.photo %>" alt="User image" class="details-box" />
+    <div class="details-box width-75">
+      <h2> Name: <%= @user.name %></h2> 
+      <p class="right">Number of Posts: <%= @user.posts_counter || 0 %></p>    
+    </div>
+  </div>
+  <p class="details-box bio">Bio: <%= @user.bio %>
+</div>
+
+<div>
+  <% @posts.each.with_index(1) do |post, index| %>
+    <div class="details-box posts">
+      <h3> Post # <%= index %> <%= post.title %></h3> 
+      <p><%= post.text %></p>
+      <p class="small-text right">
+        Comments: <%= post.comments_counter || 0 %> , 
+        Likes: <%= post.likes_counter || 0%>
+      </p> 
+    </div>
+  <% end %>
+
+  <button class="center">See all posts</button>
+</div>

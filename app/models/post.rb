@@ -5,8 +5,8 @@ class Post < ApplicationRecord
 
   def user_post_counter
     counter = Post.where(author_id:).count
-    user = User.find_by_id(id: author_id)
-    user.update(posts_counter: counter)
+    author = User.find_by(id: author_id)
+    author.update(posts_counter: counter)
   end
 
   def recent_comments
