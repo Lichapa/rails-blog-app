@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :current_user, only: [:create]
-    
+  before_action :current_user, only: [:create]
+
   def index
     @user = User.find(params[:user_id])
     @posts = Post.where(author_id: params[:user_id])
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def new
-   @post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -27,9 +27,9 @@ class PostsController < ApplicationController
     end
   end
 
-
   private
-    def post_params
-      params.require(:post).permit(:author_id, :title, :text)
-    end
+
+  def post_params
+    params.require(:post).permit(:author_id, :title, :text)
+  end
 end

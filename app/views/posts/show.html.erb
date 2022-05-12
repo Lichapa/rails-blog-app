@@ -15,7 +15,7 @@
   </div>
   <%= form.submit class: "commentButton" %>
   <% end %>
-  <%= form_with scope: :like, url: "/posts/#{@post.id}/likes" do |form| %>
+  <%= form_with scope: :like, url: "/posts/#{@post.id}/likes", method: :post do |form| %>
     <%= form.submit "Like ", class: "likeButton"%>
   <% end %>
 </div>

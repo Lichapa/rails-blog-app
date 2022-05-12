@@ -3,8 +3,6 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  
-
   def recent_comments
     Comment.where(post_id: id).order(created_at: :desc).limit(5)
   end
@@ -12,6 +10,7 @@ class Post < ApplicationRecord
   after_save :user_post_counter
 
   private
+
   def user_post_counter
     author.increment!(:posts_counter)
   end
