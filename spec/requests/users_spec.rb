@@ -21,7 +21,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET #user' do
     before(:each) do
-      get '/users/24'
+      get '/users/11'
     end
 
     it 'GET requests response status was correct' do

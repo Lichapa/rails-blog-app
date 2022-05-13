@@ -7,16 +7,20 @@
     Likes: <%= @post.likes_counter || 0%>
   </p>
 </div>
-<div class="commentLike">
+<div>
   <%= form_with url: "/posts/#{@post.id}/comments", scope: :comment do |form| %>
   <div >
     <%= form.label :text %>
     <%= form.text_area :text, required: true %>
   </div>
-  <%= form.submit class: "commentButton" %>
+  <%= form.submit "Add Comment"%>
   <% end %>
-  <%= form_with scope: :like, url: "/posts/#{@post.id}/likes", method: :post do |form| %>
-    <%= form.submit "Like ", class: "likeButton"%>
+  <%= form_with  url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
+     <div class="field">
+        <%= form.hidden_field :author_id, value: current_user.id %>
+    </div>
+  <%= form.submit "Like "%>
+   
   <% end %>
 </div>
 <div class="details-box comments">
