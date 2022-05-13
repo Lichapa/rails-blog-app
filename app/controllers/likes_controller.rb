@@ -12,8 +12,10 @@ class LikesController < ApplicationController
 
     if @like.save
       redirect_to user_post_path(current_user.id, Post.find(params[:post_id]))
+      flash[:success] = 'Like saved successfully'
     else
       render new
+      flash.now[:error] = 'Like not saved'
     end
   end
 

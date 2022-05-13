@@ -22,8 +22,10 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to user_path(current_user.id)
+      flash[:success] = 'Post saved successfully'
     else
       render :new
+      flash.now[:error] = 'Post not saved'
     end
   end
 
