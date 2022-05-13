@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  user = User.first
-  post = Post.find_by(author_id: user)
+  post = Post.new(author_id: 9, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
+                  likes_counter: 0)
   subject do
     Like.new(author_id: post.author_id, post_id: post.id)
   end
