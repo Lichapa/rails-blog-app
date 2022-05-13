@@ -1,0 +1,36 @@
+<div class="posts-home">
+  <div class='flex inline'>
+    <img src="<%= @user.photo %>" alt="User image" class="details-box"/>
+    <div class="details-box width-75">
+      <h2><%= @user.name %></h2> 
+      <p class="right">Number of Posts: <%= @user.posts_counter || 0 %></p>
+    </div>
+  </div>    
+</div>
+
+<% @posts.each.with_index(1) do |post, index| %>
+<div class="details-box posts"> 
+  <h3> Post # <%= index %> <a href="<%= user_post_path(post.author.id, post.id)%>"><%= post.title %></a></h3> 
+  <p><%= post.text %></p>
+  <p class="small-text right">
+    Comments: <%= post.comments_counter || 0 %> , 
+    Likes: <%= post.likes_counter || 0%>
+  </p>
+</div>
+<div class="details-box comments">
+<h4>Comments:</h4>
+  <%if Comment.all.where(post_id: post.id).length != 0%>
+    <%Comment.all.where(post_id: post.id).each do |comment| %>
+      <%user = User.all.find(comment.author_id)%>
+      <p> <%= user.name %>: <%= comment.text%></p>
+
+    <%end%>
+  <%end%>
+</div>
+
+<br>
+<% end %>
+
+<div>
+   <button class="center">Pagination</button>
+</div>

@@ -1,0 +1,37 @@
+<div class="details-box posts">
+  <h3> Post by: <%= @user.name %></h3> 
+  <h4>Title: <%= @post.title%></h4>
+  <p><%= @post.text %></p>
+  <p class="small-text right">
+    Comments: <%= @post.comments_counter || 0 %> , 
+    Likes: <%= @post.likes_counter || 0%>
+  </p>
+</div>
+<div>
+  <%= form_with url: "/posts/#{@post.id}/comments", scope: :comment do |form| %>
+  <div >
+    <%= form.label :text %>
+    <%= form.text_area :text, required: true %>
+  </div>
+  <%= form.submit "Add Comment"%>
+  <% end %>
+  <%= form_with  url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
+     <div class="field">
+        <%= form.hidden_field :author_id, value: current_user.id %>
+    </div>
+  <%= form.submit "Like "%>
+   
+  <% end %>
+</div>
+<div class="details-box comments">
+<h4>Comments:</h4>
+  <%if Comment.all.where(post_id: @post.id).length != 0%>
+    <%Comment.all.where(post_id: @post.id).each do |comment| %>
+      <%user = User.all.find(comment.author_id)%>
+      <p> <%= user.name %>: <%= comment.text%></p>
+
+    <%end%>
+  <%end%>
+</div>
+
+<br>
