@@ -12,6 +12,10 @@
 
   <body>
     <div>
+    <% flash.each do |name, msg| -%>
+    <p class="field"><%= msg %></p>
+  <% end -%>
+
       <%= link_to("All Users", users_path)%>
       <%= link_to("New post", new_post_path)%>
     </div>

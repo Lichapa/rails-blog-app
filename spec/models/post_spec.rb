@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   subject do
     @user = User.new(name: 'Mphatso', bio: 'I am from Malawi', photo: 'photourl')
-    Post.new(author: @user, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
+    Post.new(user: @user, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
              likes_counter: 0)
   end
   before { subject.save }
