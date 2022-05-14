@@ -15,9 +15,10 @@
   </div>
   <%= form.submit "Add Comment"%>
   <% end %>
+  
   <%= form_with  url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
      <div class="field">
-        <%= form.hidden_field :author_id, value: current_user.id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
   <%= form.submit "Like "%>
    
@@ -27,7 +28,7 @@
 <h4>Comments:</h4>
   <%if Comment.all.where(post_id: @post.id).length != 0%>
     <%Comment.all.where(post_id: @post.id).each do |comment| %>
-      <%user = User.all.find(comment.author_id)%>
+      <%user = User.all.find(comment.user_id)%>
       <p> <%= user.name %>: <%= comment.text%></p>
 
     <%end%>

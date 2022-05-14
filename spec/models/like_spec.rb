@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  user = User.first
-  post = Post.find_by(author_id: user)
   subject do
-    Like.new(author_id: post.author_id, post_id: post.id)
+    @user = User.new(name: 'Mphatso', bio: 'I am from Malawi', photo: 'photourl')
+    @post = Post.new(user: @user.id, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
+                     likes_counter: 0)
+    Like.new(user_id: @post.user_id, post_id: @post.id)
   end
   before { subject.save }
 
   it "author_id shouldn't be a string" do
-    subject.author_id = 'string'
+    subject.user_id = 'string'
     expect(subject).to_not be_valid
   end
 

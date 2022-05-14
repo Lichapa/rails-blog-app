@@ -26,11 +26,11 @@ RSpec.describe User, type: :model do
   end
 
   it 'recent_posts method should return last three posts' do
-    Post.create(author: subject, title: 'first post', text: 'test3', comments_counter: 0, likes_counter: 0)
-    second_post = Post.create(author: subject, title: 'second post', text: 'test2', comments_counter: 0,
+    Post.create(user: subject, title: 'first post', text: 'test3', comments_counter: 0, likes_counter: 0)
+    second_post = Post.create(user: subject, title: 'second post', text: 'test2', comments_counter: 0,
                               likes_counter: 0)
-    third_post = Post.create(author: subject, title: 'third post', text: 'test3', comments_counter: 0, likes_counter: 0)
-    fourth_post = Post.create(author: subject, title: 'fourth post', text: 'test4', comments_counter: 0,
+    third_post = Post.create(user: subject, title: 'third post', text: 'test3', comments_counter: 0, likes_counter: 0)
+    fourth_post = Post.create(user: subject, title: 'fourth post', text: 'test4', comments_counter: 0,
                               likes_counter: 0)
     expect(subject.recent_posts.length).to eq 3
     expect(subject.posts_counter).to eq 4
