@@ -10,7 +10,7 @@
 
 <% @posts.each.with_index(1) do |post, index| %>
 <div class="details-box posts"> 
-  <h3> Post # <%= index %> <a href="<%= user_post_path(post.author.id, post.id)%>"><%= post.title %></a></h3> 
+  <h3> Post # <%= index %> <a href="<%= user_post_path(post.user.id, post.id)%>"><%= post.title %></a></h3> 
   <p><%= post.text %></p>
   <p class="small-text right">
     Comments: <%= post.comments_counter || 0 %> , 
@@ -21,7 +21,7 @@
 <h4>Comments:</h4>
   <%if Comment.all.where(post_id: post.id).length != 0%>
     <%Comment.all.where(post_id: post.id).each do |comment| %>
-      <%user = User.all.find(comment.author_id)%>
+      <%user = User.all.find(comment.user_id)%>
       <p> <%= user.name %>: <%= comment.text%></p>
 
     <%end%>

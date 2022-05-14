@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  post = Post.new(author_id: 9, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
+  @user = User.new(name: 'Mphatso', bio: 'I am from Malawi', photo: 'photourl')
+  post = Post.new(author: @user, title: 'rspec test', text: 'Create test and let them fail', comments_counter: 0,
                   likes_counter: 0)
   subject do
     Comment.new(author_id: post.author_id, post_id: post.id, text: 'Test Comment')
