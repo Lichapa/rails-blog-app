@@ -11,6 +11,7 @@
   </head>
 
   <body>
+   <%= render 'devise/shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
@@ -19,8 +20,7 @@
         <p class="field"><%= msg %></p>
       <% end -%>
 
-      <%= link_to("All Users", users_path)%>
-      <%= link_to("New post", new_post_path)%>
+    
     </div>
     
     <%= yield %>
