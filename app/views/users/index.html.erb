@@ -1,13 +1,20 @@
 <div class="users-home">
-<% @users.each do |user| %>
+
+
+
+  <% @users.each do |user| %>
   <div class="flex inline">
-   
+
     <img src="https://unsplash.com/photos/85CsURLMfaU" alt="User image" class="details-box" />
       <div class="details-box width-75">
-        <h1>Name: <a href="<%= user_path(user.id)%>"><%= user.name %></a></h1> 
-        <p class="right">Number of Posts: <%= user.posts_counter || 0 %></p>
+        <h1>Name: <a href="<%= user_path(user.id)%>"><%= user.name %></a></h1>
+        <p class="right">Number of Articles: <%= user.posts_counter || 0 %></p>
       </div>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+
+
+
+
 </div>
 

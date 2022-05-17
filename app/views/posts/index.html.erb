@@ -2,18 +2,18 @@
   <div class='flex inline'>
     <img src="<%= @user.photo %>" alt="User image" class="details-box"/>
     <div class="details-box width-75">
-      <h2><%= @user.name %></h2> 
+      <h2><%= @user.name %></h2>
       <p class="right">Number of Posts: <%= @user.posts_counter || 0 %></p>
     </div>
-  </div>    
+  </div>
 </div>
 
 <% @posts.each.with_index(1) do |post, index| %>
-<div class="details-box posts"> 
-  <h3> Post # <%= index %> <a href="<%= user_post_path(post.user.id, post.id)%>"><%= post.title %></a></h3> 
+<div class="details-box posts">
+  <h3> Post # <%= index %> <a href="<%= user_post_path(post.user.id, post.id)%>"><%= post.title %></a></h3>
   <p><%= post.text %></p>
   <p class="small-text right">
-    Comments: <%= post.comments_counter || 0 %> , 
+    Comments: <%= post.comments_counter || 0 %> ,
     Likes: <%= post.likes_counter || 0%>
   </p>
 </div>
@@ -32,5 +32,5 @@
 <% end %>
 
 <div>
-   <button class="center">Pagination</button>
+   <button class="center">Page</button>
 </div>
