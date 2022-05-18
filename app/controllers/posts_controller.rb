@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :current_user, only: [:create]
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id] || current_user.id)
   end
 
   def index
@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     )
 
     if @post.save
+      @post.update_posts_counter(params[:user_id])
       redirect_to user_path(current_user.id)
       flash[:success] = 'Post saved successfully'
     else
@@ -36,22 +37,25 @@ class PostsController < ApplicationController
     end
   end
 
+  
+
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-     
-    if @post.destro
-      redirect_to user_path(current_user.id)
+       
+    if @post.destroy  
+      @post.update_posts_counter(@post.user_id) 
+      redirect_to users_path, status:303       
       flash[:success] = 'Post deleted successfully'
     else
-      render :new
+      redirect_to users_path, status:303
       flash.now[:error] = 'Post not deleted'
     end
   end
 
-  private
+   private
 
   def post_params
     params.require(:post).permit(:user_id, :title, :text)
   end
+ 
 end

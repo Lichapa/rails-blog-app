@@ -23,6 +23,7 @@
   <%= form.submit "Like "%>
    
   <% end %>
+  <%= button_to "Delete Post", post_path(@post.id), method: :delete %>
 </div>
 <div class="details-box comments">
 <h4>Comments:</h4>
