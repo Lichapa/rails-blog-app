@@ -12,10 +12,24 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to user_post_path(current_user.id, Post.find(params[:post_id]))
+      @comment.update_comments_counter(@comment.post_id)
       flash[:success] = 'Comment saved successfully'
     else
       render :new
       flash.now[:error] = 'Comment not saved'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    if @comment.destroy
+      @comment.update_comments_counter(@comment.post_id)
+      redirect_to user_posts_path(@comment.user_id), status: 303
+      flash[:success] = 'Comment has been deleted successfully.'
+    else
+      redirect_to user_posts_path(@comment.user_id), status: 303
+      flash.now[:error] = 'An error occured. Try again.'
     end
   end
 

@@ -81,3 +81,5 @@ gem 'ffi'
 gem 'rails-controller-testing'
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
+
+gem 'cancancan', '~> 3.3'
