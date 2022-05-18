@@ -37,25 +37,22 @@ class PostsController < ApplicationController
     end
   end
 
-  
-
   def destroy
     @post = Post.find(params[:id])
-       
-    if @post.destroy  
-      @post.update_posts_counter(@post.user_id) 
-      redirect_to users_path, status:303       
+
+    if @post.destroy
+      @post.update_posts_counter(@post.user_id)
+      redirect_to users_path, status: 303
       flash[:success] = 'Post deleted successfully'
     else
-      redirect_to users_path, status:303
+      redirect_to users_path, status: 303
       flash.now[:error] = 'Post not deleted'
     end
   end
 
-   private
+  private
 
   def post_params
     params.require(:post).permit(:user_id, :title, :text)
   end
- 
 end
