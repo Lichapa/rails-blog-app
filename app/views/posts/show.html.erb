@@ -1,9 +1,9 @@
 <div class="details-box posts">
-  <h3> Post by: <%= @user.name %></h3> 
+  <h3> Post by: <%= @user.name %></h3>
   <h4>Title: <%= @post.title%></h4>
   <p><%= @post.text %></p>
   <p class="small-text right">
-    Comments: <%= @post.comments_counter || 0 %> , 
+    Comments: <%= @post.comments_counter || 0 %> ,
     Likes: <%= @post.likes_counter || 0%>
   </p>
 </div>
@@ -15,10 +15,10 @@
   </div>
   <%= form.submit "Add Comment"%>
   <% end %>
-  
+
   <%= form_with  url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.submit "Like "%>   
+    <%= form.submit "Like "%>
   <% end %>
   <% if can? :destroy, @post%>
     <%= button_to "Delete Posts", post_path(@post.id), method: :delete %>
@@ -31,6 +31,12 @@
       <%user = User.all.find(comment.user_id)%>
       <p> <%= user.name %>: <%= comment.text%></p>
 
+
+      <% if can? :destroy, comment %>
+        <%= button_to "Delete Comment", post_comment_path(@post.id, comment.id), method: :delete %>
+      <% end %>
+
+      
     <%end%>
   <%end%>
 </div>
