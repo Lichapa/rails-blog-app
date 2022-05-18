@@ -16,7 +16,9 @@
   <p class="small-text right">
     Comments: <%= post.comments_counter || 0 %> ,
     Likes: <%= post.likes_counter || 0%>,
-    <%= button_to "Delete Posts", post_path(post.id), method: :delete %>
+    <% if can? :destroy, post%>
+      <%= button_to "Delete Posts", post_path(post.id), method: :delete %>
+    <% end %>
   </p>
 </div>
 <div class="details-box comments">
