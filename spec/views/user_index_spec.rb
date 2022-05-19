@@ -3,11 +3,14 @@ RSpec.describe 'user_index_path', type: :feature do
   describe 'User index page' do
     before(:each) do
       @first_user = User.create(name: 'Benjamin', photo: 'url', bio: 'Developer from Ghana',
-                                posts_counter: 0, email: 'benjamin@mail.com', password: 'password', password_confirmation: 'password')
+                                posts_counter: 0, email: 'benjamin@mail.com',
+                                password: 'password', password_confirmation: 'password')
       @first_user = User.create(name: 'Edmond', photo: 'url', bio: 'Designer from Ghana',
-                                posts_counter: 2, email: 'edmond@mail.com', password: 'password', password_confirmation: 'password')
+                                posts_counter: 2, email: 'edmond@mail.com',
+                                password: 'password', password_confirmation: 'password')
       @second_user = User.create(name: 'Theo', photo: 'url', bio: 'Developer from Ghana',
-                                 posts_counter: 4, email: 'theo@mail.com', password: 'password', password_confirmation: 'password')
+                                 posts_counter: 4, email: 'theo@mail.com',
+                                 password: 'password', password_confirmation: 'password')
       visit('users/sign_in')
       fill_in 'Email', with: 'benjamin@mail.com'
       fill_in 'Password', with: 'password'
