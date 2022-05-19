@@ -36,15 +36,16 @@ RSpec.feature 'Logins', type: :feature do
       fill_in 'Password', with: ''
       click_button 'Log in'
       expect(page).to have_content 'Invalid Email or password.'
-    end 
+    end
 
     scenario 'Submitting form with the correct email and password' do
-      @user = User.create(name: 'mphatso', email: 'mphatso@mail.com', password: 'password', bio: 'love', photo: 'url', posts_counter: 0)
+      @user = User.create(name: 'mphatso', email: 'mphatso@mail.com', 
+                          password: 'password', bio: 'love', photo: 'url', posts_counter: 0)
       visit new_user_session_path
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       click_button 'Log in'
       expect(page).to have_content 'Signed in successfully.'
     end
-  end  
+  end
 end

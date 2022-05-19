@@ -9,17 +9,14 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.filter_run_when_matching :focus
-  config.example_status_persistence_file_path = "spec/examples.txt"
+  config.example_status_persistence_file_path = 'spec/examples.txt'
   config.disable_monkey_patching!
-  
-    # This setting enables warnings. It's recommended, but in some cases may
-    # be too noisy due to issues in dependencies.
-  # config.warnings = true
-  
 
-  if config.files_to_run.one?
-    onfig.default_formatter = "doc"
-  end
+  # This setting enables warnings. It's recommended, but in some cases may
+  # be too noisy due to issues in dependencies.
+  # config.warnings = true
+
+  onfig.default_formatter = 'doc' if config.files_to_run.one?
 
   config.profile_examples = 10
   config.order = :random
