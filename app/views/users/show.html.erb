@@ -12,7 +12,7 @@
 <div>
   <% @posts.each.with_index(1) do |post, index| %>
     <div class="details-box posts">
-      <h3> Post # <%= index %> <%= post.title %></h3>
+      <h3> Post # <%= index %> <a href="<%= user_post_path(post.user.id, post.id)%>"><%= post.title %></a></h3>
       <p><%= post.text %></p>
       <p class="small-text right">
         Comments: <%= post.comments_counter || 0 %> ,
